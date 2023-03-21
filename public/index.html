@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MyMOPH</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:image" content="https://mymoph.moph.go.th/assets/images/mymoph-v8-go-green.png">
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" href="./mymoph-app-icon-radius.ico"
+        type="image/x-icon">
+    <link rel="stylesheet" href="qr.css">
+    <script>
+        ! function (a) {
+            function b() {
+                if (d())
+                    return !1;
+                a.history.length > 1 ? a.history.back() : h.indexOf("android") > -1 && h.indexOf("chrome") < 0 || a
+                    .close()
+            }
+
+            function c() {
+                return /line\/[0-9]*?\.[0-9]*?\.[0-9]*?$/.test(h)
+            }
+
+            function d() {
+                return !!h.match(/win(dows )?nt/) || -1 != h.indexOf("macintosh") && !("ontouchend" in document)
+            }
+
+            function e(a) {
+                var b = document.createElement("iframe");
+                b.src = a,
+                    b.setAttribute("height", 0),
+                    b.setAttribute("width", 0),
+                    b.style.display = "none",
+                    document.body.appendChild(b)
+            }
+
+            function f(b) {
+                var f = navigator.userAgent.toLowerCase();
+                if (-1 != f.indexOf("iphone") || -1 != f.indexOf("ipod") || -1 != f.indexOf("ipad")) {
+                    if (b && !/#~/.test(location.hash)) {
+                        var h = f.match(/os (\d+)/);
+                        c() || h.length > 1 && 1 * h[1] < 9 ? e(b) : location.href = b,
+                            location.hash = "~"
+                    }
+                    if (a.onhashchange)
+                        a.onhashchange = function (a) {
+                            /#~/.test(a.oldURL) && history.back()
+                        };
+                    else {
+                        var i = location.hash;
+                        g = setInterval(function () {
+                            i != location.hash && /#~/.test(i) && (clearInterval(g), history.back())
+                        }, j)
+                    }
+                } else
+                    b && d() && e(b)
+            }
+
+            var g,
+                h = navigator.userAgent.toLowerCase(),
+                i = 1e3,
+                j = 500;
+            document.addEventListener("DOMContentLoaded", function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const clientId = urlParams.get('c')
+                const sessionId = urlParams.get('s')
+
+                var a = document.getElementById("jsLaunchApp"),
+                    c = document.getElementById("jsGoToStore"),
+                    g = document.getElementById("jsInstallApp");
+                a.setAttribute('data-href',`mymoph://qr?clientId=${clientId}&sessionId=${sessionId}`)
+                a && f(a.dataset.href),
+                    a && a.addEventListener("click", function (c) {
+                        c.preventDefault(),
+                            d() ? e(a.dataset.href) : location.href = a.dataset.href,
+                            setTimeout(function () {
+                                b()
+                            }, i)
+                    }, !1),
+                    c && c.addEventListener("click", function (a) {
+                        a.preventDefault(),
+                            location.href = c.dataset.href,
+                            setTimeout(function () {
+                                b()
+                            }, i)
+                    }, !1),
+                    g && g.addEventListener("click", function (a) {
+                        a.preventDefault(),
+                            location.href = g.dataset.href,
+                            setTimeout(function () {
+                                b()
+                            }, i)
+                    }, !1)
+            })
+        }(window);
+    </script>
+</head>
+
+<body class="ExOsMac ">
+    <div class="LyWrap">
+
+        <!--CONTENTS-AREA-->
+        <div class="LyContents" role="main">
+
+            <div class="MdCMN01ImgSet">
+                <h1 class="mdCMN01Head"><a href="/" class="mdCMN01Logo">MyMOPH</a></h1>
+                <div class="mdCMN01Body">
+                    <div class="mdCMN01BodyInner">
+                        <div class="mdCMN01Img"><img src="./mymoph-app-icon-radius.png" alt="MyMOPH" width="90"
+                                height="90"></div>
+                        <p class="mdCMN01Desc">
+                            โปรดเปิด MyMOPH<br />แล้วดำเนินการต่อ
+                        </p>
+                    </div>
+                </div>
+                <div class="mdCMN01Foot">
+                    <div class="mdCMN01FootInner">
+                        <div class="mdCMN01Btn"><a href="#" class="MdBtn02P01" id="jsLaunchApp"
+                                data-href="mymoph://home"> เปิด MyMOPH
+                            </a></div>
+                        <div class="mdCMN01Btn"><a href="#" class="MdBtn02P02" id="jsInstallApp"
+                                data-href="itms-apps://apps.apple.com/th/app/mymoph/id6443612630?mt=8&l=th"> ดาวน์โหลด
+                                MyMOPH
+                            </a></div>
+                    </div>
+                </div>
+            </div>
+
+            <!--/LyContents-->
+        </div>
+        <!--/CONTENTS-AREA-->
+
+        <!--/LyWrap-->
+    </div>
+    <!--SCRIPT-->
+    <!--/SCRIPT-->
+</body>
+
+</html>
