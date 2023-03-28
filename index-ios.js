@@ -16,11 +16,12 @@ app.use(express.static(__dirname + '/public'));
 app.get('/:clientId/:sessionId', (req, res) => {
   const clientId = req.params.clientId;
   const sessionId = req.params.sessionId;
-  res.render('index', {
+  res.render('ios', {
     clientId,
     sessionId
   })
 });
+
 // app.get('/:clientId/:sessionId', (req, res) => {
 //   app.use(express.static(path.join(__dirname, 'dist')));
 //   res.sendFile(path.join(__dirname, './dist/index.html'));
