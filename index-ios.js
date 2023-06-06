@@ -25,7 +25,7 @@ app.get('/:clientId/:sessionId', (req, res) => {
 app.get('/q/:clientId/:sessionId', (req, res) => {
   const clientId = req.params.clientId;
   const sessionId = req.params.sessionId;
-  res.render('ios', {
+  res.render('ios-q', {
     clientId,
     sessionId
   })
